@@ -1,2 +1,3 @@
 # avd_demo
-Repository for AVD
+Repository for AVD Created by Aavisek Choudhury
+Copyright : Whyazure.in
