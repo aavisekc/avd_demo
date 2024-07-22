@@ -1,8 +1,4 @@
-# Script Written by Aavisek Choudhury to Install New Teams (MSIX Package)
-# Install VC++ Reditributable
-# Install RDCWEBRTCSvc
-
-# Define the log file
+# Define the log file location
 $logFile = "C:\Temp\script_log.txt"
 
 # Function to write to the log file
@@ -23,7 +19,7 @@ if (-Not (Test-Path -Path $targetDirectory)) {
     Write-Log "Directory already exists: $targetDirectory"
 }
 
-# Check if the files already exist
+# Paths for the files to be downloaded
 $vcRuntimeFile = "C:\temp\vc_redist.x64.exe"
 $rdcwebrtcSvcFile = "C:\temp\MsRdcWebRTCSvc_HostSetup_1.50.2402.29001_x64.msi"
 $teamsFile = "C:\temp\Teams_windows_x64.msi"
@@ -58,7 +54,7 @@ if (-Not (Test-Path -Path $teamsFile)) {
 }
 Start-Sleep -s 5
 
-# Install C++ runtime if it is not already installed
+# Check for C++ Runtime installation by looking for its registry key
 $vcRuntimeRegKey = "HKLM:\SOFTWARE\Microsoft\VisualStudio\14.0\VC\Runtimes\x64"
 if (-Not (Test-Path -Path $vcRuntimeRegKey)) {
     Write-Log "Starting installation of C++ Runtime"
@@ -69,7 +65,7 @@ if (-Not (Test-Path -Path $vcRuntimeRegKey)) {
 }
 Start-Sleep -s 10
 
-# Install MSRDCWEBRTCSvc if it is not already installed
+# Check for MSRDCWEBRTCSvc installation by looking for its registry key
 $rdcwebrtcSvcRegKey = "HKLM:\SOFTWARE\Microsoft\MSRDCWEBRTCSvc"
 if (-Not (Test-Path -Path $rdcwebrtcSvcRegKey)) {
     Write-Log "Starting installation of MSRDCWEBRTCSvc"
@@ -80,7 +76,7 @@ if (-Not (Test-Path -Path $rdcwebrtcSvcRegKey)) {
 }
 Start-Sleep -s 10
 
-# Define the URLs and target file paths
+# Define the URLs and target file paths for additional downloads
 $urls = @{
     "https://go.microsoft.com/fwlink/?linkid=2243204&clcid=0x409" = "$targetDirectory\teamsbootstrapper.exe"
     "https://go.microsoft.com/fwlink/?linkid=2196106" = "$targetDirectory\TeamsSetup.msix"
@@ -98,7 +94,7 @@ foreach ($url in $urls.Keys) {
     }
 }
 
-# Run the teamsbootstrapper.exe with the specified parameters if it is not already installed
+# Run the teamsbootstrapper.exe with parameters if it exists
 $teamsBootstrapperPath = $urls["https://go.microsoft.com/fwlink/?linkid=2243204&clcid=0x409"]
 if (Test-Path -Path $teamsBootstrapperPath) {
     Write-Log "Running teamsbootstrapper.exe with parameters."
@@ -111,6 +107,7 @@ if (Test-Path -Path $teamsBootstrapperPath) {
 
 Write-Log "Script execution complete."
 
+# Set registry key indicating the environment
 New-Item -Path "HKLM:\SOFTWARE\Microsoft\Teams" -Force | Out-Null
 New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Teams" -Name IsWVDEnvironment -PropertyType DWORD -Value 1 -Force | Out-Null
 Write-Log "Set IsWVDEnvironment registry key to 1"
