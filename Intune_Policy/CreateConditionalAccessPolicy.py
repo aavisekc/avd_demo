@@ -1,7 +1,10 @@
+# Created by Aavisek Choudhury
+# whyazure.com
+
 import requests
 import json
 from msal import ConfidentialClientApplication
-# Azure AD Credentials – Replace with your actual values
+# EntraID Credentials – Replace with your actual values
 TENANT_ID = "your_tenant_id"
 CLIENT_ID = "your_client_id"
 CLIENT_SECRET = "your_client_secret"
