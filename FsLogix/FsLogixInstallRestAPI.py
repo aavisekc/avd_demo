@@ -1,6 +1,7 @@
 ###################################################
 #    FSLogix Setup Installation Python Rest API  #
 #    Written by Aavisek Choudhury
+#    Microsoft MVP for AVD and Windows 365
 ###################################################
 from flask import Flask, jsonify
 import os

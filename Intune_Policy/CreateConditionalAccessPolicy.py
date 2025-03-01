@@ -1,5 +1,6 @@
-# Created by Aavisek Choudhury
-# whyazure.com
+#    Created by Aavisek Choudhury
+# 	 whyazure.com
+#    Microsoft MVP for AVD and Windows 365
 
 import requests
 import json

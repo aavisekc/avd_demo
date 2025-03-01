@@ -1,6 +1,7 @@
 ###################################################
 #    FSLogix Setup Installation Script   #
 #    Written by Aavisek Choudhury
+#    Microsoft MVP for AVD and Windows 365
 ###################################################
 
 $StartTime = Get-Date
