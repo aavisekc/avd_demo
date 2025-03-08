@@ -6,7 +6,7 @@
 
 
 # Import Variables values from csv file
-$variables = import-csv '.\AVDInfra.csv' -delimiter ","
+$variables = import-csv '.\Path1\Path2\AVDInfra.csv' -delimiter ","
 
 foreach ($variable in $variables)
 {
