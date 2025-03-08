@@ -1,0 +1,2 @@
+﻿InsightsRG,location,LogAnalyticsWorkspaceName,HostPoolrgName,WorkspaceName,HostPoolName,DAGPath,DesktopApplicationName
+avdinsight,eastus,xxxxx,XXXXhprg,XXXXWS,XXXXHP,/subscriptions/XXXX/resourceGroups/XXXX/providers/Microsoft.DesktopVirtualization/applicationgroups/XXXX-DAG,XXXXX-DAG
