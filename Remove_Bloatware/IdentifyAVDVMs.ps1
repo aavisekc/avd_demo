@@ -1,10 +1,9 @@
 ###################################################
 #    Remove Bloatware from Windows in AVD VM Script   #
+#    This script removes preinstalled and provisioned Microsoft applications (bloatware) in Windows 11 by calling another script # 
 #    Written by Aavisek Choudhury
 #    Microsoft MVP for AVD and Windows 365
 ###################################################
-
-
 # Import Variables values from csv file
 $variables = import-csv '.\Path1\Path2\AVDInfra.csv' -delimiter ","
 
@@ -151,7 +150,7 @@ if ($vmcount -gt 0)
         if($flag -eq "PowerState/running")
         {
             Write-Host "Running the Bloatware Script in resource group $ResourceGroupName and in VM $item"
-            Invoke-AzVMRunCommand -ResourceGroupName $ResourceGroupName -Name $item  -CommandId 'RunPowerShellScript' -ScriptPath '.\_AVDInfra-CI\AVDInfraArtifact\RemoveBloatware.ps1'
+            Invoke-AzVMRunCommand -ResourceGroupName $ResourceGroupName -Name $item  -CommandId 'RunPowerShellScript' -ScriptPath '.\RemoveBloatware.ps1'
             Write-Host "Bloatware Completed on $item, Congratulations!!!"
         }
         else
