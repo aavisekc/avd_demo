@@ -4,7 +4,6 @@
 #    Written by Aavisek Choudhury
 #    Microsoft MVP for AVD and Windows 365
 ###################################################
-
 # Load parameters from JSON file
 $paramFile = Get-Content '.\parameters.json' | ConvertFrom-Json
 $rgName = $paramFile.ResourceGroupName  # Resource Group Name
@@ -12,6 +11,7 @@ $vmNames = $paramFile.VirtualMachineNames  # Array of Virtual Machine Names
 
 # Capture the start time of the script execution
 $StartTime = Get-Date
+# Test
 
 # Loop through each VM in the list
 foreach ($vmName in $vmNames) {
